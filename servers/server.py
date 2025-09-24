@@ -62,9 +62,10 @@ async def handle_connection(reader, writer):
     # Get a nickname for the new client
     print("...handle connection")
     writer.write("> Choose your nickname: ".encode())
-
     response = await reader.readuntil(b"\n")
     writer.nickname = response.decode().strip()
+
+    print(writer.nickname)
 
     connection_pool.add_new_user_to_pool(writer)
     connection_pool.send_welcome_message(writer)
