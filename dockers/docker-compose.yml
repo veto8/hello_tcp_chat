@@ -1,0 +1,13 @@
+version: '3'
+services:
+  nginx_tcp_client:
+    container_name: tcp_client
+    image: nginx
+    ports:
+      - "88:80"
+    volumes:
+      - ./etc/nginx/conf.d:/etc/nginx/conf.d      
+      - ../clients/browser:/usr/share/nginx/html/
+    tty: true
+
+
